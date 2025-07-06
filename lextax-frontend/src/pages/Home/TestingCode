@@ -1,0 +1,204 @@
+import React, { useState } from 'react';
+import { 
+  FiSearch, 
+  FiClock,
+  FiCheckCircle,
+  FiActivity,
+  FiInfo
+} from 'react-icons/fi';
+import { FaBrain } from "react-icons/fa";
+import { MdBalance } from 'react-icons/md';
+import { BiLoaderAlt, BiSearchAlt } from 'react-icons/bi';
+import { AiOutlineRobot } from 'react-icons/ai';
+import infoImage from '../../assets/images/Glogo.png';
+import toast from 'react-hot-toast';
+import { demoData, searchDemo } from '../../data/Data';
+import './Home.css';
+
+const Home = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [searchResults, setSearchResults] = useState(null);
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const processingSteps = [
+    { icon: <FaBrain />, text: 'Understanding your question...' },
+    { icon: <BiSearchAlt />, text: 'Searching tax regulations...' },
+    { icon: <MdBalance />, text: 'Finding relevant sections...' },
+    { icon: <FiActivity />, text: 'Simplifying complex terms...' },
+    { icon: <FiCheckCircle />, text: 'Preparing your answer...' }
+  ];
+
+  const handleSearch = async (query = searchQuery) => {
+    if (!query.trim()) {
+      toast.error('Please enter a question about Sri Lankan taxes');
+      return;
+    }
+
+    setIsLoading(true);
+    setIsProcessing(true);
+    setCurrentStep(0);
+    setSearchResults(null);
+
+    toast.loading('AI Assistant is working on your question...', { id: 'search-toast' });
+
+    // Simulate processing steps
+    for (let i = 0; i < processingSteps.length; i++) {
+      setCurrentStep(i);
+      await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400));
+    }
+
+    // Simulate search
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    try {
+      // Get demo results
+      const results = searchDemo(query);
+      setSearchResults(results);
+      toast.success('Found relevant tax information!', { id: 'search-toast' });
+    } catch (error) {
+      toast.error('Failed to search. Please try again.', { id: 'search-toast' });
+    } finally {
+      setIsLoading(false);
+      setIsProcessing(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  return (
+    <main className="lextax-home">
+      <div className="lextax-home-hero">
+        <h1 className="lextax-home-title">
+          Sri Lankan Tax Made Simple
+        </h1>
+        <p className="lextax-home-subtitle">
+          Get instant, easy-to-understand answers about Sri Lankan tax laws. 
+          No legal jargon, just clear explanations you can trust.
+        </p>
+      </div>
+
+      <div className="lextax-search-container">
+        <div className="lextax-search-box">
+          <input
+            type="text"
+            className="lextax-search-input"
+            placeholder="Ask me anything about Sri Lankan taxes..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
+            disabled={isLoading}
+          />
+          <button 
+            className="lextax-search-button"
+            onClick={() => handleSearch()}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <BiLoaderAlt className="lextax-search-spinner" />
+            ) : (
+              <FiSearch />
+            )}
+            {isLoading ? 'Searching' : 'Search'}
+          </button>
+        </div>
+
+        {/* Information Tip */}
+        <div className="lextax-info-tip">
+          <div className="lextax-tip-content">
+            <img 
+              src={infoImage} 
+              alt="Info" 
+              className="lextax-tip-image"
+            />
+            <div className="lextax-tip-text">
+              <span className="lextax-tip-description">
+                Data updated with latest tax information verified under IRD Sri Lankan Government
+              </span>
+            </div>
+            <div className="lextax-verified-badge">
+              <FiCheckCircle />
+              <span>Verified</span>
+            </div>
+          </div>
+        </div>
+
+        {isProcessing && (
+          <div className="lextax-processing">
+            <div className="lextax-processing-title">
+              <AiOutlineRobot />
+              AI Assistant is working
+              <div className="lextax-thinking-dots">
+                <span className="lextax-thinking-dot"></span>
+                <span className="lextax-thinking-dot"></span>
+                <span className="lextax-thinking-dot"></span>
+              </div>
+            </div>
+            {processingSteps.map((step, index) => (
+              <div 
+                key={index}
+                className={`lextax-processing-step ${index <= currentStep ? 'active' : ''} ${index === currentStep ? 'current' : ''}`}
+              >
+                {step.icon}
+                {step.text}
+                {index === currentStep && (
+                  <BiLoaderAlt className="lextax-step-spinner" />
+                )}
+                {index < currentStep && (
+                  <FiCheckCircle className="lextax-step-done" />
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {searchResults && !isProcessing && (
+          <div className="lextax-results">
+            <div className="lextax-result-card">
+              <div className="lextax-result-header">
+                <h3 className="lextax-result-title">{searchResults.title}</h3>
+                <span className="lextax-result-source">
+                  Source: {searchResults.source}
+                </span>
+              </div>
+              <div className="lextax-result-content">
+                <p className="lextax-result-answer">{searchResults.answer}</p>
+                {searchResults.keyPoints && (
+                  <div className="lextax-key-points">
+                    <h4>Key Points:</h4>
+                    <ul>
+                      {searchResults.keyPoints.map((point, index) => (
+                        <li key={index}>{point}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {searchResults.example && (
+                  <div className="lextax-example">
+                    <h4>Example:</h4>
+                    <p>{searchResults.example}</p>
+                  </div>
+                )}
+              </div>
+              <div className="lextax-result-footer">
+                <span className="lextax-confidence">
+                  Confidence: {searchResults.confidence}%
+                </span>
+                <span className="lextax-response-time">
+                  <FiClock /> Response time: {searchResults.responseTime}s
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+};
+
+export default Home;

@@ -1,0 +1,95 @@
+/* LexTax - Root Colors and Basic Styles */
+
+:root {
+  /* Primary Colors */
+  --lextax-primary-blue: #1e40af;
+  --lextax-primary-teal: #0d9488;
+  --lextax-primary-navy: #1e293b;
+  --lextax-primary-cyan: #06b6d4;
+  
+  /* Secondary Colors */
+  --lextax-secondary-light-blue: #3b82f6;
+  --lextax-secondary-emerald: #10b981;
+  --lextax-secondary-slate: #475569;
+  --lextax-secondary-sky: #0ea5e9;
+  
+  /* Accent Colors */
+  --lextax-accent-gold: #f59e0b;
+  --lextax-accent-orange: #ea580c;
+  --lextax-accent-purple: #8b5cf6;
+  --lextax-accent-pink: #ec4899;
+  
+  /* Light Mode Colors */
+  --lextax-white: #ffffff;
+  --lextax-gray-50: #f8fafc;
+  --lextax-gray-100: #f1f5f9;
+  --lextax-gray-200: #e2e8f0;
+  --lextax-gray-300: #cbd5e1;
+  --lextax-gray-400: #94a3b8;
+  --lextax-gray-500: #64748b;
+  --lextax-gray-600: #475569;
+  --lextax-gray-700: #334155;
+  --lextax-gray-800: #1e293b;
+  --lextax-gray-900: #0f172a;
+  
+  /* Gradient Colors */
+  --lextax-gradient-primary: linear-gradient(135deg, var(--lextax-primary-blue) 0%, var(--lextax-primary-teal) 100%);
+  --lextax-gradient-secondary: linear-gradient(135deg, var(--lextax-secondary-sky) 0%, var(--lextax-secondary-emerald) 100%);
+  --lextax-gradient-accent: linear-gradient(135deg, var(--lextax-accent-purple) 0%, var(--lextax-accent-pink) 100%);
+  --lextax-gradient-dark: linear-gradient(135deg, var(--lextax-gray-800) 0%, var(--lextax-primary-navy) 100%);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  /* Dark Mode Specific Colors */
+  --lextax-white: #0f172a;
+  --lextax-gray-50: #1e293b;
+  --lextax-gray-100: #334155;
+  --lextax-gray-200: #475569;
+  --lextax-gray-300: #64748b;
+  --lextax-gray-400: #94a3b8;
+  --lextax-gray-500: #cbd5e1;
+  --lextax-gray-600: #e2e8f0;
+  --lextax-gray-700: #f1f5f9;
+  --lextax-gray-800: #f8fafc;
+  --lextax-gray-900: #ffffff;
+  
+  /* Dark Mode Gradients */
+  --lextax-gradient-dark: linear-gradient(135deg, var(--lextax-gray-900) 0%, var(--lextax-gray-800) 100%);
+}
+
+/* Basic Reset and Body Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+  color: var(--lextax-gray-800);
+  background: var(--lextax-gray-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lextax-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Basic Utility Classes */
+.lextax-text-gradient {
+  background: var(--lextax-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

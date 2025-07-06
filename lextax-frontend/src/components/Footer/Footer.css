@@ -1,0 +1,487 @@
+/* Footer Styles */
+.lextax-footer {
+  background: var(--lextax-gradient-dark);
+  color: var(--lextax-white);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.lextax-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--lextax-gradient-primary);
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 150, 136, 0.3);
+}
+
+.lextax-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px 32px;
+}
+
+/* Main Footer Content */
+.lextax-footer-main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+/* Brand Section */
+.lextax-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lextax-footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.lextax-footer-logo-image {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lextax-footer-logo-image:hover {
+  transform: scale(1.08) rotateY(5deg);
+  filter: brightness(1.3) drop-shadow(0 4px 12px rgba(0, 150, 136, 0.3));
+}
+
+.lextax-footer-description {
+  color: var(--lextax-gray-300);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+/* Horizontal Contact Information */
+.lextax-footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.lextax-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--lextax-gray-300);
+  font-size: 0.875rem;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.lextax-contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.lextax-contact-item:hover {
+  background: rgba(0, 150, 136, 0.15);
+  border-color: var(--lextax-primary-teal);
+  color: var(--lextax-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 150, 136, 0.2);
+}
+
+.lextax-contact-item:hover::before {
+  left: 100%;
+}
+
+.lextax-contact-icon {
+  color: var(--lextax-primary-teal);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.lextax-contact-item:hover .lextax-contact-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.lextax-contact-text {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Footer Links */
+.lextax-footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.lextax-footer-section-title {
+  color: var(--lextax-white);
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-size: 1.125rem;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.lextax-footer-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--lextax-primary-teal);
+  border-radius: 1px;
+}
+
+.lextax-footer-section-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lextax-footer-link {
+  color: var(--lextax-gray-300);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.lextax-link-text {
+  transition: transform 0.3s ease;
+}
+
+.lextax-link-arrow {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--lextax-primary-teal);
+  font-weight: bold;
+}
+
+.lextax-footer-link:hover {
+  color: var(--lextax-white);
+  padding-left: 12px;
+}
+
+.lextax-footer-link:hover .lextax-link-text {
+  transform: translateX(4px);
+}
+
+.lextax-footer-link:hover .lextax-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Enhanced Disclaimer Section */
+.lextax-footer-disclaimer-section {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.lextax-disclaimer-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.lextax-disclaimer-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 165, 0, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lextax-accent-orange);
+  font-size: 1.5rem;
+  border: 2px solid rgba(255, 165, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.15);
+}
+
+.lextax-disclaimer-text {
+  flex: 1;
+}
+
+.lextax-disclaimer-title {
+  color: var(--lextax-white);
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lextax-disclaimer-description {
+  color: var(--lextax-gray-300);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Footer Bottom */
+.lextax-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 32px;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+}
+
+.lextax-footer-bottom::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.lextax-footer-bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lextax-footer-copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--lextax-gray-400);
+  font-size: 0.875rem;
+}
+
+.lextax-copyright-text {
+  font-weight: 500;
+  color: var(--lextax-gray-300);
+}
+
+.lextax-footer-developer {
+  font-size: 0.75rem;
+  color: var(--lextax-gray-400);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lextax-developer-icon {
+  color: var(--lextax-primary-teal);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.lextax-footer-developer:hover .lextax-developer-icon {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--lextax-accent-gold);
+}
+
+/* Social Links */
+.lextax-footer-bottom-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.lextax-social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.lextax-social-title {
+  color: var(--lextax-gray-400);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.lextax-social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.lextax-social-link {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lextax-gray-300);
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lextax-social-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--social-color, var(--lextax-primary-teal));
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.lextax-social-link svg {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.lextax-social-link:hover {
+  color: var(--lextax-white);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--social-color, var(--lextax-primary-teal));
+}
+
+.lextax-social-link:hover::before {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.lextax-social-link:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lextax-footer-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .lextax-footer-links {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .lextax-footer-contact {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lextax-contact-item {
+    align-self: flex-start;
+  }
+
+  .lextax-disclaimer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .lextax-disclaimer-icon {
+    align-self: flex-start;
+  }
+
+  .lextax-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .lextax-footer-bottom-right {
+    align-items: flex-start;
+  }
+
+  .lextax-social-links {
+    align-items: flex-start;
+  }
+
+  .lextax-footer-container {
+    padding: 60px 20px 24px;
+  }
+
+  .lextax-footer-logo-image {
+    height: 55px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lextax-footer-contact {
+    gap: 12px;
+  }
+
+  .lextax-contact-item {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .lextax-social-icons {
+    gap: 12px;
+  }
+
+  .lextax-social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .lextax-footer-logo-image {
+    height: 50px;
+  }
+
+  .lextax-footer-developer {
+    font-size: 0.7rem;
+  }
+
+  .lextax-disclaimer-content {
+    padding: 0;
+  }
+
+  .lextax-footer-disclaimer-section {
+    padding: 24px 20px;
+  }
+}

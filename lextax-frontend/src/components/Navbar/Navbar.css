@@ -1,0 +1,374 @@
+/* Navbar Styles */
+.lextax-navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--lextax-gray-200);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.lextax-navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: relative;
+}
+
+/* Center Container */
+.lextax-navbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Theme Toggle */
+.lextax-theme-toggle {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
+.lextax-theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lextax-theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.lextax-toggle-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lextax-toggle-icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.lextax-toggle-icon.active {
+  opacity: 1;
+  color: var(--lextax-accent-gold);
+}
+
+.lextax-sun-icon.active {
+  transform: rotate(0deg);
+  animation: sunRotate 2s ease-in-out infinite;
+}
+
+.lextax-moon-icon.active {
+  color: var(--lextax-primary-cyan);
+}
+
+@keyframes sunRotate {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.lextax-toggle-slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background: var(--lextax-gray-300);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.lextax-toggle-slider.dark {
+  background: var(--lextax-primary-blue);
+}
+
+.lextax-toggle-circle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: var(--lextax-white);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lextax-toggle-slider.dark .lextax-toggle-circle {
+  transform: translateX(20px);
+  background: var(--lextax-gray-100);
+}
+
+/* Animation Container */
+.lextax-animation-container {
+  position: relative;
+  height: 50px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Logo Wrapper */
+.lextax-logo-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.lextax-logo-wrapper.lextax-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+}
+
+.lextax-logo-wrapper.lextax-hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) scale(0.8) rotateY(180deg);
+}
+
+.lextax-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.lextax-logo-image {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.lextax-logo-image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Text Wrapper */
+.lextax-text-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.lextax-text-wrapper.lextax-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1) rotateX(0deg);
+  animation: textGlow 0.8s ease-out;
+}
+
+.lextax-text-wrapper.lextax-hide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) scale(0.9) rotateX(-90deg);
+}
+
+.lextax-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--lextax-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.lextax-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--lextax-gradient-primary);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 0.6s ease;
+}
+
+.lextax-text-wrapper.lextax-show .lextax-text::after {
+  transform: scaleX(1);
+}
+
+/* Animations */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 0 rgba(30, 64, 175, 0);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
+  }
+  100% {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Pulse effect for container */
+.lextax-animation-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: pulse 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.2;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lextax-navbar-container {
+    padding: 0 16px;
+  }
+  
+  .lextax-animation-container {
+    width: 180px;
+    height: 45px;
+  }
+  
+  .lextax-logo-image {
+    height: 40px;
+  }
+  
+  .lextax-text {
+    font-size: 1.3rem;
+  }
+
+  .lextax-theme-toggle-btn {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .lextax-toggle-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .lextax-toggle-slider {
+    width: 35px;
+    height: 18px;
+  }
+
+  .lextax-toggle-circle {
+    width: 12px;
+    height: 12px;
+  }
+
+  .lextax-toggle-slider.dark .lextax-toggle-circle {
+    transform: translateX(17px);
+  }
+}
+
+@media (max-width: 480px) {
+  .lextax-animation-container {
+    width: 160px;
+    height: 40px;
+  }
+  
+  .lextax-logo-image {
+    height: 35px;
+  }
+  
+  .lextax-text {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+  }
+
+  .lextax-theme-toggle-btn {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .lextax-toggle-slider {
+    width: 30px;
+    height: 16px;
+  }
+
+  .lextax-toggle-circle {
+    width: 10px;
+    height: 10px;
+  }
+
+  .lextax-toggle-slider.dark .lextax-toggle-circle {
+    transform: translateX(14px);
+  }
+}
+
+/* Hover effects for the entire container */
+.lextax-animation-container:hover .lextax-logo-image {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.lextax-animation-container:hover .lextax-text {
+  transform: translateY(-1px);
+}
+
+/* Loading animation on page load */
+.lextax-navbar {
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
