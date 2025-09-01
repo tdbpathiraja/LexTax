@@ -1,0 +1,407 @@
+/* ==================== MODAL OVERLAY ==================== */
+.lextax-acknowledgment-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 15px;
+  animation: lextaxFadeIn 0.3s ease-out;
+}
+
+.lextax-acknowledgment-modal {
+  background: var(--lextax-white);
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--lextax-gray-200);
+  position: relative;
+  animation: lextaxSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="dark"] .lextax-acknowledgment-modal {
+  background: var(--lextax-gray-800);
+  border-color: var(--lextax-gray-700);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ==================== HEADER SECTION ==================== */
+.lextax-acknowledgment-header {
+  text-align: center;
+  padding: 25px 30px 15px 30px;
+  background: var(--lextax-gradient-primary);
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.lextax-acknowledgment-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.lextax-acknowledgment-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.lextax-brain-icon {
+  width: 28px;
+  height: 28px;
+  color: white;
+  animation: lextaxPulse 2s ease-in-out infinite;
+}
+
+.lextax-acknowledgment-title {
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lextax-acknowledgment-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== CONTENT SECTION ==================== */
+.lextax-acknowledgment-content {
+  padding: 25px 30px 20px 30px;
+}
+
+.lextax-intro-text {
+  margin-bottom: 20px;
+}
+
+.lextax-intro-text p {
+  color: var(--lextax-gray-700);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+[data-theme="dark"] .lextax-intro-text p {
+  color: var(--lextax-gray-300);
+}
+
+.lextax-intro-text strong {
+  color: var(--lextax-gray-800);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .lextax-intro-text strong {
+  color: var(--lextax-gray-100);
+}
+
+/* ==================== DISCLAIMER SECTION ==================== */
+.lextax-disclaimer {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .lextax-disclaimer {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(147, 51, 234, 0.12) 100%);
+  border-color: rgba(59, 130, 246, 0.25);
+}
+
+.lextax-disclaimer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--lextax-gradient-primary);
+}
+
+.lextax-disclaimer-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--lextax-primary-blue);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.lextax-disclaimer-content h4 {
+  color: var(--lextax-gray-800);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+[data-theme="dark"] .lextax-disclaimer-content h4 {
+  color: var(--lextax-gray-100);
+}
+
+.lextax-disclaimer-content p {
+  color: var(--lextax-gray-600);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+[data-theme="dark"] .lextax-disclaimer-content p {
+  color: var(--lextax-gray-300);
+}
+
+/* ==================== FOOTER SECTION ==================== */
+.lextax-acknowledgment-footer {
+  padding: 20px 30px;
+  text-align: center;
+  border-top: 1px solid var(--lextax-gray-200);
+  background: var(--lextax-gray-50);
+  border-radius: 0 0 20px 20px;
+}
+
+[data-theme="dark"] .lextax-acknowledgment-footer {
+  background: var(--lextax-gray-900);
+  border-color: var(--lextax-gray-700);
+}
+
+.lextax-accept-button {
+  background: var(--lextax-gradient-primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.lextax-accept-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lextax-accept-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.lextax-accept-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+}
+
+.lextax-accept-button:hover::before {
+  left: 100%;
+}
+
+.lextax-accept-button:active {
+  transform: translateY(0);
+}
+
+.lextax-footer-note {
+  color: var(--lextax-gray-500);
+  font-size: 11px;
+  margin: 10px 0 0 0;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .lextax-footer-note {
+  color: var(--lextax-gray-400);
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes lextaxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lextaxSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lextaxPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .lextax-acknowledgment-overlay {
+    padding: 10px;
+  }
+  
+  .lextax-acknowledgment-modal {
+    border-radius: 18px;
+    max-height: 85vh;
+  }
+  
+  .lextax-acknowledgment-header {
+    padding: 18px 20px 12px 20px;
+    border-radius: 18px 18px 0 0;
+  }
+  
+  .lextax-acknowledgment-content {
+    padding: 20px 25px 18px 25px;
+  }
+  
+  .lextax-acknowledgment-footer {
+    padding: 18px 25px;
+    border-radius: 0 0 18px 18px;
+  }
+  
+  .lextax-acknowledgment-title {
+    font-size: 20px;
+  }
+  
+  .lextax-acknowledgment-subtitle {
+    font-size: 13px;
+  }
+  
+  .lextax-acknowledgment-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 12px;
+  }
+  
+  .lextax-brain-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .lextax-intro-text p {
+    font-size: 13px;
+  }
+  
+  .lextax-disclaimer {
+    padding: 14px;
+  }
+  
+  .lextax-disclaimer-content h4 {
+    font-size: 12px;
+  }
+  
+  .lextax-disclaimer-content p {
+    font-size: 11px;
+  }
+  
+  .lextax-accept-button {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+  
+  .lextax-footer-note {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lextax-acknowledgment-header {
+    padding: 16px 18px 10px 18px;
+  }
+  
+  .lextax-acknowledgment-content {
+    padding: 18px 20px 16px 20px;
+  }
+  
+  .lextax-acknowledgment-footer {
+    padding: 16px 20px;
+  }
+  
+  .lextax-acknowledgment-title {
+    font-size: 18px;
+  }
+  
+  .lextax-acknowledgment-subtitle {
+    font-size: 12px;
+  }
+  
+  .lextax-intro-text {
+    margin-bottom: 16px;
+  }
+  
+  .lextax-intro-text p {
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  .lextax-disclaimer {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .lextax-disclaimer-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .lextax-disclaimer-content h4 {
+    font-size: 11px;
+  }
+  
+  .lextax-disclaimer-content p {
+    font-size: 10px;
+  }
+}

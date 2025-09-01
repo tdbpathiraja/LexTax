@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-
-//Public Components
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-
-//Web Pages
 import Home from './pages/Home/Home';
-
-
 import './App.css';
 
 const App = () => {
+  /* ==================== STATE MANAGEMENT ==================== */
   const [theme, setTheme] = useState('light');
 
-  // Load theme from localStorage on mount
+  /* ==================== EFFECTS ==================== */
   useEffect(() => {
     const savedTheme = localStorage.getItem('lextax-theme');
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.setAttribute('data-theme', savedTheme);
     } else {
-      // Check system preference
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const initialTheme = prefersDark ? 'dark' : 'light';
       setTheme(initialTheme);
@@ -30,7 +24,7 @@ const App = () => {
     }
   }, []);
 
-  // Toggle theme function
+  /* ==================== EVENT HANDLERS ==================== */
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
@@ -38,6 +32,7 @@ const App = () => {
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
+  /* ==================== RENDER ==================== */
   return (
     <div className="lextax-app">
       <Router>
@@ -45,7 +40,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          {/* Add more routes as needed */}
         </Routes>
         <Footer />
         <Toaster 

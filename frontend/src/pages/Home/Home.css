@@ -1,4 +1,4 @@
-/* Home Page Styles */
+/* ==================== HOME PAGE STYLES ==================== */
 .lextax-home {
   flex: 1;
   display: flex;
@@ -14,7 +14,7 @@
   transition: background 0.3s ease;
 }
 
-/* Hero Section */
+/* ==================== HERO SECTION ==================== */
 .lextax-home-hero {
   text-align: center;
   max-width: 800px;
@@ -39,17 +39,14 @@
   line-height: 1.6;
 }
 
-/* Feature Highlights Section */
-
+/* ==================== FEATURE HIGHLIGHTS SECTION ==================== */
 :root {
-  /* Light Mode */
   --lextax-feature-bg: rgba(255, 255, 255, 0.7);
   --lextax-feature-border: rgba(255, 255, 255, 0.3);
   --lextax-feature-shadow: rgba(0, 0, 0, 0.1);
   --lextax-feature-shadow-hover: rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Theme */
 [data-theme="dark"] {
   --lextax-feature-bg: rgba(30, 41, 59, 0.8);
   --lextax-feature-border: rgba(71, 85, 105, 0.5);
@@ -145,8 +142,7 @@
   }
 }
 
-
-/* Search Container */
+/* ==================== SEARCH CONTAINER ==================== */
 .lextax-search-container {
   width: 100%;
   max-width: 700px;
@@ -180,10 +176,50 @@
   color: var(--lextax-gray-800);
   background: transparent;
   border-radius: inherit;
+  font-family: inherit;
+  resize: none;
+  overflow: hidden;
+  transition: height 0.2s ease;
+  line-height: 1.5;
+  min-height: 60px;
+  max-height: 140px;
 }
 
 .lextax-search-input::placeholder {
   color: var(--lextax-gray-400);
+}
+
+.lextax-search-input::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lextax-search-input::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lextax-search-input::-webkit-scrollbar-thumb {
+  background: var(--lextax-gray-300);
+  border-radius: 2px;
+}
+
+.lextax-search-input::-webkit-scrollbar-thumb:hover {
+  background: var(--lextax-gray-400);
+}
+
+[data-theme="dark"] .lextax-search-input {
+  color: var(--lextax-gray-100);
+}
+
+[data-theme="dark"] .lextax-search-input::placeholder {
+  color: var(--lextax-gray-500);
+}
+
+[data-theme="dark"] .lextax-search-input::-webkit-scrollbar-thumb {
+  background: var(--lextax-gray-600);
+}
+
+[data-theme="dark"] .lextax-search-input::-webkit-scrollbar-thumb:hover {
+  background: var(--lextax-gray-500);
 }
 
 .lextax-search-button {
@@ -202,9 +238,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-height: 48px;
+  z-index: 1;
 }
 
-.lextax-search-button:hover {
+.lextax-search-button:hover:not(:disabled) {
   transform: translateY(-50%) scale(1.05);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -225,7 +263,89 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Information Tip */
+/* ==================== VALIDATION ERROR ==================== */
+.lextax-validation-error {
+  margin: 12px 0 8px 0;
+  animation: slideInError 0.3s ease-out;
+}
+
+.lextax-error-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, 
+    rgba(239, 68, 68, 0.08) 0%, 
+    rgba(220, 38, 38, 0.08) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .lextax-error-content {
+  background: linear-gradient(135deg, 
+    rgba(239, 68, 68, 0.12) 0%, 
+    rgba(220, 38, 38, 0.12) 100%);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.lextax-error-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    var(--lextax-accent-orange) 0%, 
+    #dc2626 100%);
+}
+
+.lextax-error-icon {
+  color: var(--lextax-accent-orange);
+  font-size: 16px;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lextax-error-message {
+  color: var(--lextax-gray-700);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .lextax-error-message {
+  color: var(--lextax-gray-200);
+}
+
+@keyframes slideInError {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* ==================== INFORMATION TIP ==================== */
 .lextax-info-tip {
   margin-top: 12px;
   margin-bottom: 20px;
@@ -294,7 +414,7 @@
   height: 10px;
 }
 
-/* Processing Status */
+/* ==================== PROCESSING STATUS ==================== */
 .lextax-processing {
   background: var(--lextax-white);
   border-radius: 16px;
@@ -371,7 +491,7 @@
   color: var(--lextax-secondary-emerald);
 }
 
-/* Search Results */
+/* ==================== SEARCH RESULTS ==================== */
 .lextax-results {
   width: 100%;
   max-width: 800px;
@@ -404,8 +524,14 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--lextax-gray-800);
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   line-height: 1.3;
+}
+
+.lextax-result-source-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .lextax-result-source {
@@ -418,6 +544,50 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+
+.lextax-result-tax-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, 
+    rgba(139, 69, 19, 0.08) 0%, 
+    rgba(101, 163, 13, 0.08) 100%);
+  color: var(--lextax-gray-700);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(139, 69, 19, 0.15);
+  max-width: fit-content;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .lextax-result-tax-act {
+  background: linear-gradient(135deg, 
+    rgba(139, 69, 19, 0.12) 0%, 
+    rgba(101, 163, 13, 0.12) 100%);
+  color: var(--lextax-gray-200);
+  border-color: rgba(139, 69, 19, 0.25);
+}
+
+.lextax-result-tax-act svg {
+  color: #8b4513;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .lextax-result-tax-act svg {
+  color: #d2691e;
+}
+
+.lextax-result-tax-act:hover {
+  background: linear-gradient(135deg, 
+    rgba(139, 69, 19, 0.12) 0%, 
+    rgba(101, 163, 13, 0.12) 100%);
+  transform: translateX(2px);
+  border-color: rgba(139, 69, 19, 0.25);
 }
 
 .lextax-result-content {
@@ -467,37 +637,6 @@
   font-weight: bold;
 }
 
-.lextax-example {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.05) 0%, 
-    rgba(13, 148, 136, 0.05) 100%);
-  border-radius: 12px;
-  padding: 24px;
-  margin: 24px 0;
-  border: 1px solid rgba(59, 130, 246, 0.1);
-}
-
-.lextax-example h4 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--lextax-primary-blue);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lextax-example h4::before {
-  content: '💡';
-  font-size: 1.2rem;
-}
-
-.lextax-example p {
-  color: var(--lextax-gray-700);
-  line-height: 1.6;
-  font-style: italic;
-}
-
 .lextax-result-footer {
   padding: 24px 32px;
   background: var(--lextax-gray-50);
@@ -526,7 +665,7 @@
   color: var(--lextax-gray-500);
 }
 
-/* Responsive Design */
+/* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
   .lextax-home {
     padding: 40px 16px;
@@ -541,13 +680,27 @@
   }
   
   .lextax-search-input {
+    padding: 20px 24px;
     padding-right: 100px;
     font-size: 1rem;
+    min-height: 56px;
+    max-height: 120px;
   }
   
   .lextax-search-button {
     padding: 12px 16px;
     font-size: 0.875rem;
+    right: 6px;
+    min-height: 44px;
+  }
+
+  .lextax-error-content {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .lextax-error-message {
+    font-size: 0.8rem;
   }
 
   .lextax-tip-content {
@@ -561,6 +714,15 @@
     padding: 3px 6px;
     font-size: 0.6rem;
   }
+
+  .lextax-result-source-container {
+    gap: 10px;
+  }
+
+  .lextax-result-tax-act {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -570,6 +732,36 @@
   
   .lextax-search-container {
     max-width: 100%;
+  }
+
+  .lextax-search-input {
+    padding: 18px 20px;
+    padding-right: 90px;
+    font-size: 0.95rem;
+    min-height: 52px;
+    max-height: 100px;
+  }
+
+  .lextax-search-button {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    right: 5px;
+    min-height: 40px;
+  }
+
+  .lextax-error-content {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .lextax-error-message {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .lextax-error-icon {
+    font-size: 14px;
+    min-width: 14px;
   }
 
   .lextax-result-header,
@@ -593,5 +785,84 @@
   .lextax-verified-badge {
     font-size: 0.55rem;
     padding: 2px 5px;
+  }
+
+  .lextax-result-source-container {
+    gap: 8px;
+  }
+
+  .lextax-result-tax-act {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    gap: 6px;
+  }
+
+  .lextax-result-tax-act svg {
+    font-size: 12px;
+  }
+}
+
+/* ==================== DARK THEME SUPPORT ==================== */
+[data-theme="dark"] .lextax-result-header {
+  background: linear-gradient(135deg, 
+    var(--lextax-gray-800) 0%, 
+    var(--lextax-gray-700) 100%);
+  border-bottom-color: var(--lextax-gray-600);
+}
+
+[data-theme="dark"] .lextax-result-title {
+  color: var(--lextax-gray-100);
+}
+
+[data-theme="dark"] .lextax-result-answer {
+  color: var(--lextax-gray-200);
+}
+
+[data-theme="dark"] .lextax-key-points {
+  background: var(--lextax-gray-800);
+  border-left-color: var(--lextax-primary-teal);
+}
+
+[data-theme="dark"] .lextax-key-points h4 {
+  color: var(--lextax-gray-100);
+}
+
+[data-theme="dark"] .lextax-key-points li {
+  color: var(--lextax-gray-200);
+}
+
+[data-theme="dark"] .lextax-result-footer {
+  background: var(--lextax-gray-800);
+  border-top-color: var(--lextax-gray-600);
+}
+
+/* ==================== ANIMATIONS ==================== */
+.lextax-result-tax-act {
+  animation: slideInFromLeft 0.3s ease-out 0.1s both;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+.lextax-result-tax-act:focus {
+  outline: 2px solid var(--lextax-primary-blue);
+  outline-offset: 2px;
+}
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+  .lextax-result-tax-act {
+    background: #f5f5f5 !important;
+    border: 1px solid #999;
+    color: #333 !important;
   }
 }

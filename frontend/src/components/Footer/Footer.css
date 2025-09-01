@@ -1,4 +1,4 @@
-/* Footer Styles */
+/* ==================== FOOTER STYLES ==================== */
 .lextax-footer {
   background: var(--lextax-gradient-dark);
   color: var(--lextax-white);
@@ -25,7 +25,7 @@
   padding: 80px 24px 32px;
 }
 
-/* Main Footer Content */
+/* ==================== MAIN FOOTER CONTENT ==================== */
 .lextax-footer-main {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -33,7 +33,7 @@
   margin-bottom: 60px;
 }
 
-/* Brand Section */
+/* ========== BRAND SECTION ========== */
 .lextax-footer-brand {
   display: flex;
   flex-direction: column;
@@ -67,7 +67,7 @@
   font-size: 0.95rem;
 }
 
-/* Horizontal Contact Information */
+/* ========== HORIZONTAL CONTACT INFORMATION ========== */
 .lextax-footer-contact {
   display: flex;
   flex-wrap: wrap;
@@ -130,7 +130,7 @@
   font-weight: 500;
 }
 
-/* Footer Links */
+/* ========== FOOTER LINKS ========== */
 .lextax-footer-links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -203,7 +203,7 @@
   transform: translateX(0);
 }
 
-/* Enhanced Disclaimer Section */
+/* ==================== ENHANCED DISCLAIMER SECTION ==================== */
 .lextax-footer-disclaimer-section {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
@@ -257,7 +257,7 @@
   margin: 0;
 }
 
-/* Footer Bottom */
+/* ==================== FOOTER BOTTOM ==================== */
 .lextax-footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -316,7 +316,7 @@
   color: var(--lextax-accent-gold);
 }
 
-/* Social Links */
+/* ========== SOCIAL LINKS ========== */
 .lextax-footer-bottom-right {
   display: flex;
   flex-direction: column;
@@ -396,7 +396,7 @@
   transform: scale(1.1) rotate(5deg);
 }
 
-/* Responsive Design */
+/* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
   .lextax-footer-main {
     grid-template-columns: 1fr;

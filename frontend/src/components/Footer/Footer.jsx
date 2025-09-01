@@ -15,68 +15,11 @@ import footerLogoDark from '../../assets/images/Lex Tax Logo.png';
 import './Footer.css';
 
 const Footer = () => {
+  /* ==================== STATE MANAGEMENT ==================== */
   const currentYear = new Date().getFullYear();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Check for dark mode
-  useEffect(() => {
-    const checkDarkMode = () => {
-      // Check multiple possible theme implementations
-      const htmlDark = document.documentElement.classList.contains('dark');
-      const bodyDark = document.body.classList.contains('dark-theme') || 
-                      document.body.classList.contains('dark');
-      const dataDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const rootDark = document.documentElement.style.getPropertyValue('--theme') === 'dark';
-      
-      // Check if any dark mode indicator is present
-      const isDark = htmlDark || bodyDark || dataDark || rootDark;
-      
-      console.log('Theme check:', { htmlDark, bodyDark, dataDark, rootDark, isDark });
-      setIsDarkMode(isDark);
-    };
-
-    // Initial check
-    checkDarkMode();
-    
-    // Listen for theme changes on document element
-    const documentObserver = new MutationObserver(() => {
-      setTimeout(checkDarkMode, 50); // Small delay to ensure changes are applied
-    });
-    
-    // Listen for theme changes on body element
-    const bodyObserver = new MutationObserver(() => {
-      setTimeout(checkDarkMode, 50);
-    });
-
-    // Observe both document and body for class/attribute changes
-    documentObserver.observe(document.documentElement, { 
-      attributes: true, 
-      attributeFilter: ['class', 'data-theme', 'style'] 
-    });
-    
-    bodyObserver.observe(document.body, { 
-      attributes: true, 
-      attributeFilter: ['class', 'data-theme', 'style'] 
-    });
-
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleMediaChange = () => {
-      setTimeout(checkDarkMode, 50);
-    };
-    mediaQuery.addEventListener('change', handleMediaChange);
-
-    // Also check periodically in case theme changes aren't caught
-    const interval = setInterval(checkDarkMode, 2000);
-
-    return () => {
-      documentObserver.disconnect();
-      bodyObserver.disconnect();
-      mediaQuery.removeEventListener('change', handleMediaChange);
-      clearInterval(interval);
-    };
-  }, []);
-
+  /* ==================== CONFIGURATION ==================== */
   const footerSections = [
     {
       title: 'Tax Resources',
@@ -120,12 +63,62 @@ const Footer = () => {
     { icon: <FiPhone />, text: '+94 11 213 5135', href: 'tel:+94112135135' }
   ];
 
+  /* ==================== EFFECTS ==================== */
+  useEffect(() => {
+    const checkDarkMode = () => {
+      const htmlDark = document.documentElement.classList.contains('dark');
+      const bodyDark = document.body.classList.contains('dark-theme') || 
+                      document.body.classList.contains('dark');
+      const dataDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const rootDark = document.documentElement.style.getPropertyValue('--theme') === 'dark';
+      
+      const isDark = htmlDark || bodyDark || dataDark || rootDark;
+      setIsDarkMode(isDark);
+    };
+
+    checkDarkMode();
+    
+    const documentObserver = new MutationObserver(() => {
+      setTimeout(checkDarkMode, 50);
+    });
+    
+    const bodyObserver = new MutationObserver(() => {
+      setTimeout(checkDarkMode, 50);
+    });
+
+    documentObserver.observe(document.documentElement, { 
+      attributes: true, 
+      attributeFilter: ['class', 'data-theme', 'style'] 
+    });
+    
+    bodyObserver.observe(document.body, { 
+      attributes: true, 
+      attributeFilter: ['class', 'data-theme', 'style'] 
+    });
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleMediaChange = () => {
+      setTimeout(checkDarkMode, 50);
+    };
+    mediaQuery.addEventListener('change', handleMediaChange);
+
+    const interval = setInterval(checkDarkMode, 2000);
+
+    return () => {
+      documentObserver.disconnect();
+      bodyObserver.disconnect();
+      mediaQuery.removeEventListener('change', handleMediaChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  /* ==================== RENDER ==================== */
   return (
     <footer className="lextax-footer">
       <div className="lextax-footer-container">
-        {/* Main Footer Content */}
+        
+        {/* ========== MAIN FOOTER CONTENT ========== */}
         <div className="lextax-footer-main">
-          {/* Brand Section */}
           <div className="lextax-footer-brand">
             <div className="lextax-footer-logo">
               <img 
@@ -133,8 +126,6 @@ const Footer = () => {
                 alt="LexTax Logo" 
                 className="lextax-footer-logo-image"
                 onError={(e) => {
-                  console.error('Footer logo failed to load:', e.target.src);
-                  // Fallback to light logo if dark logo fails
                   if (e.target.src === footerLogoDark) {
                     e.target.src = footerLogoLight;
                   }
@@ -146,7 +137,6 @@ const Footer = () => {
               Get accurate, simplified answers to your tax questions powered by AI.
             </p>
             
-            {/* Horizontal Contact Information */}
             <div className="lextax-footer-contact">
               {contactInfo.map((contact, index) => (
                 <a 
@@ -163,7 +153,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Footer Links */}
           <div className="lextax-footer-links">
             {footerSections.map((section, index) => (
               <div key={index} className="lextax-footer-section">
@@ -183,7 +172,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Enhanced Disclaimer Section */}
+        {/* ========== DISCLAIMER SECTION ========== */}
         <div className="lextax-footer-disclaimer-section">
           <div className="lextax-disclaimer-content">
             <div className="lextax-disclaimer-icon">
@@ -201,7 +190,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom */}
+        {/* ========== FOOTER BOTTOM ========== */}
         <div className="lextax-footer-bottom">
           <div className="lextax-footer-bottom-left">
             <div className="lextax-footer-copyright">

@@ -4,22 +4,25 @@ import logoImage from '../../assets/images/Lex Tax Logo.png';
 import './Navbar.css';
 
 const Navbar = ({ theme, toggleTheme }) => {
+  /* ==================== STATE MANAGEMENT ==================== */
   const [showLogo, setShowLogo] = useState(true);
 
+  /* ==================== EFFECTS ==================== */
   useEffect(() => {
     const interval = setInterval(() => {
       setShowLogo(prev => !prev);
-    }, 3000); // Switch every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
+  /* ==================== RENDER ==================== */
   return (
     <nav className="lextax-navbar">
       <div className="lextax-navbar-container">
+        {/* ========== CENTER LOGO ANIMATION ========== */}
         <div className="lextax-navbar-center">
           <div className="lextax-animation-container">
-            {/* Logo */}
             <div className={`lextax-logo-wrapper ${showLogo ? 'lextax-show' : 'lextax-hide'}`}>
               <a href="/" className="lextax-logo">
                 <img 
@@ -30,14 +33,13 @@ const Navbar = ({ theme, toggleTheme }) => {
               </a>
             </div>
             
-            {/* Text */}
             <div className={`lextax-text-wrapper ${!showLogo ? 'lextax-show' : 'lextax-hide'}`}>
               <span className="lextax-text">Tax Assistant</span>
             </div>
           </div>
         </div>
 
-        {/* Theme Toggle */}
+        {/* ========== THEME TOGGLE ========== */}
         <div className="lextax-theme-toggle">
           <button 
             className="lextax-theme-toggle-btn"
